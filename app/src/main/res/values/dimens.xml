@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="hazard_text_size">32sp</dimen>
     <dimen name="text_size">32sp</dimen>
+    <dimen name="text_padding">16dp</dimen>
 </resources>

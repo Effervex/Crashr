@@ -18,7 +18,8 @@
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/text_padding"/>
 
     <TextSwitcher
         android:id="@+id/hazard2"
@@ -28,7 +29,8 @@
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/hazard1"/>
+        android:layout_below="@id/hazard1"
+        android:padding="@dimen/text_padding"/>
 
     <TextSwitcher
         android:id="@+id/hazard3"
@@ -38,7 +40,8 @@
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/hazard2"/>
+        android:layout_below="@id/hazard2"
+        android:padding="@dimen/text_padding"/>
 
     <TextSwitcher
         android:id="@+id/hazard4"
@@ -48,7 +51,8 @@
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/hazard3"/>
+        android:layout_below="@id/hazard3"
+        android:padding="@dimen/text_padding"/>
 
     <TextSwitcher
         android:id="@+id/hazard5"
@@ -58,5 +62,6 @@
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/hazard4"/>
+        android:layout_below="@id/hazard4"
+        android:padding="@dimen/text_padding"/>
 </RelativeLayout>
