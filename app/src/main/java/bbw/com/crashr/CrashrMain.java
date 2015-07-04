@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -88,7 +89,21 @@ public class CrashrMain extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_crashr_main, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_map);
+        searchItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                startMap();
+                return true;
+            }
+        });
+
         return true;
+    }
+
+    public void startMap() {
+        startActivity(new Intent(this, HeatmapsDemoActivity.class));
     }
 
     @Override

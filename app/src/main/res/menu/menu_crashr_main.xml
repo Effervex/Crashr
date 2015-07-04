@@ -4,7 +4,7 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
 
-    <item android:id="@+id/action_compose"
+    <item android:id="@+id/action_map"
         android:icon="@drawable/ic_map_white_24dp"
         android:title="map"
         app:showAsAction="ifRoom" />
