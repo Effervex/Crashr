@@ -1,0 +1,369 @@
+818,Surface:  Unusually narrow
+819,Surface:  Broken glass
+340,Inattentive: Failed to Notice:  Lane use arrows/markings?
+341,Inattentive: Failed to Notice:  Obstructions on Roadway
+811,Surface:  Potholed
+812,Surface:  Uneven
+813,Surface:  Deep loose metal
+814,Surface:  High crown
+815,Surface:  Curve not well banked
+816,Surface:  Edge badly defined or gave way
+817,Surface:  Under construction or maintenance
+719,Crossing Road:  Misjudged speed and/or distance of vehicle
+718,Crossing Road:  Not complying with traffic signals or school patrols
+717,Crossing Road:  Suddenly stepped onto pedestrian crossing
+716,Crossing Road:  Confused by traffic or stepped back
+715,Crossing Road:  Waiting on roadway for moving traffic
+714,Crossing Road:  Failed to use pedestrian crossing when one within 20 metres
+713,Crossing Road:  Running heedless of traffic
+712,Crossing Road:  Stepping out from behind vehicles
+711,Crossing Road:  Walking heedless of traffic
+915,Animals:  Wild animal
+425,Incorrect use of vehicle controls:  Ignition turned off (steering locked)
+427,Incorrect use of vehicle controls:  Foot slipped
+912,Animals:  Farm animal straying
+198,Sudden Action:  Swerved to avoid object or for unknown reason
+195,Sudden Action:  Swerved to avoid animal
+194,Sudden Action:  Swerved to avoid pedestrian
+197,Sudden Action:  Swerved to avoid vehicle
+196,Sudden Action:  Swerved to avoid crash or broken down vehicle
+191,Sudden Action:  Braked
+193,Sudden Action:  Turned right
+192,Sudden Action:  Turned left
+524,Driver/Passenger, Boarding, Joining, In Vehicle:  Interfered with driver
+525,Driver/Passenger, Boarding, Joining, In Vehicle:  Opened door inadvertently
+526,Driver/Passenger, Boarding, Joining, In Vehicle:  Overloaded vehicle (with passengers)
+527,Driver/Passenger, Boarding, Joining, In Vehicle:  Child playing in parked vehicle
+521,Driver/Passenger, Boarding, Joining, In Vehicle:  Boarding moving vehicle
+522,Driver/Passenger, Boarding, Joining, In Vehicle:  Intentionally leaving moving vehicle
+523,Driver/Passenger, Boarding, Joining, In Vehicle:  Riding in insecure position
+826,Obstructed:  Roadside Object fell on vehicle
+443,Incorrect use of vehicle controls:  Not as close as practicable to side of road
+442,Incorrect use of vehicle controls:  At point of limited visibility
+441,Incorrect use of vehicle controls:  Inadequately lit at night: (not lit by street lights or park lights off)
+440,Incorrect use of vehicle controls:  Parked or Stopped
+447,Incorrect use of vehicle controls:  Not Clear of rail crossing
+446,Incorrect use of vehicle controls:  In ‘No Stopping’ area
+445,Incorrect use of vehicle controls:  Double parked
+444,Incorrect use of vehicle controls:  On incorrect side of road
+108,Alcohol or Drugs:  Drugs suspected
+109,Alcohol or Drugs:  Drugs proven
+102,Alcohol or Drugs:  Alcohol test below limit
+103,Alcohol or Drugs:  Alcohol test above limit or test refused
+101,Alcohol or Drugs:  Alcohol suspected
+106,Alcohol or Drugs:  
+107,Alcohol or Drugs:  
+104,Alcohol or Drugs:  Alcohol test result unknown
+105,Alcohol or Drugs:  Visibly intoxicated non-driver (pedestrian /cyclist/passenger
+902,Weather:  Dazzling sun
+903,Weather:  Strong wind
+901,Weather:  Heavy rain
+904,Weather:  Fog or mist
+905,Weather:  Snow, sleet or hail
+641,Windscreen or Mirror:  Shattered windscreen
+643,Windscreen or Mirror:  Rear vision mirror not adjusted correctly
+642,Windscreen or Mirror:  Windscreen or rear window dirty
+645,Windscreen or Mirror:  Windscreen, or rear window misted/ frosted
+644,Windscreen or Mirror:  No rear vision mirror
+647,Windscreen or Mirror:  Inadequate or no windscreen wipers
+646,Windscreen or Mirror:  Inadequate or no sun-visors
+648,Windscreen or Mirror:  Cycle/Motorcycle visor, glasses, goggles or screen
+434,Incorrect use of vehicle controls:  Intimidating Driving
+432,Incorrect use of vehicle controls:  Playing Chicken
+433,Incorrect use of vehicle controls:  Wheel spins/wheelies/doughnuts etc
+430,Incorrect use of vehicle controls:  Showing Off
+431,Incorrect use of vehicle controls:  Racing
+339,Inattentive: Failed to Notice:  Road-works signs
+338,Inattentive: Failed to Notice:  Direction, information signs/markings
+335,Inattentive: Failed to Notice:  Intersection or its Stop/Give Way control
+334,Inattentive: Failed to Notice:  Traffic lights
+337,Inattentive: Failed to Notice:  Warning sign
+336,Inattentive: Failed to Notice:  Other regulatory sign/markings
+331,Inattentive: Failed to Notice:  Car slowing, stopping or stopped in front
+333,Inattentive: Failed to Notice:  Indication of vehicle in front
+332,Inattentive: Failed to Notice:  Bend in road
+854,Markings:  Not visible due to geometry or vehicles
+855,Markings:  Old markings not adequately removed
+851,Markings:  Faded
+852,Markings:  Difficult to see under weather conditions
+853,Markings:  Markings necessary
+144,Failed to Signal in Time:  When turning right
+145,Failed to Signal in Time:  Incorrect Signal
+142,Failed to Signal in Time:  When turning left
+143,Failed to Signal in Time:  When pulling out or moving to the right
+141,Failed to Signal in Time:  When moving to left, pulling over to left
+612,Brakes:  Parking brake defective
+613,Brakes:  Service brake failed
+611,Brakes:  Parking brake failed
+614,Brakes:  Service brake defective
+615,Brakes:  Jack-knifed
+688,Load:  Towed vehicle or trailer too heavy or incompatible
+685,Load:  Excess dimensions not adequately indicated
+684,Load:  Load obscured vision
+687,Load:  Load too heavy
+686,Load:  Overdimension vehicle or load
+681,Load:  Load interferes with driver
+683,Load:  Over-hanging
+682,Load:  Not well secured or load moved
+133,Lost Control:  Under heavy acceleration
+132,Lost Control:  Under heavy braking
+131,Lost Control:  When turning
+137,Lost Control:  Avoiding another vehicle, pedestrian, party or obstacle on roadway
+136,Lost Control:  Due to vehicle fault (requires vehicle series code)
+135,Lost Control:  Due to road conditions: (requires road series code)
+134,Lost Control:  While returning to seal from unsealed shoulder
+139,Lost Control:  End of seal
+138,Lost Control:  On unsealed road
+407,Inexperience:  Driver over-reacted
+406,Inexperience:  At towing trailer / other vehicle
+405,Inexperience:  Driver under instruction
+404,Inexperience:  Overseas driver fails to adjust to local conditions
+403,Inexperience:  Driving strange vehicle
+402,Inexperience:  New driver showed inexperience
+401,Inexperience:  in driving in fast, complex or heavy traffic
+931,Entering or Leaving Land Use:  Mobile shop or Vendor
+930,Entering or Leaving Land Use:  Other non-commercial
+408,Inexperience:  Unsupervised cyclist
+379,Did not see or look for another party until too late:  When first in queue on receiving green light
+378,Did not see or look for another party until too late:  When visibility limited by roadside features
+825,Obstructed:  Road works not adequately signposted
+824,Obstructed:  Road works not adequately lighted
+373,Did not see or look for another party until too late:  Behind when pulling out from parked position
+372,Did not see or look for another party until too late:  Behind when changing lanes position or direction (includes U-turns
+375,Did not see or look for another party until too late:  When required to give way to traffic from another direction
+374,Did not see or look for another party until too late:  Behind when opening door or leaving vehicle
+377,Did not see or look for another party until too late:  When visibility obstructed by other vehicles
+376,Did not see or look for another party until too late:  When required to give way to pedestrians
+704,Walking along Road:  Not on outside of blind curve
+701,Walking along Road:  Not keeping to footpath
+702,Walking along Road:  Not keeping to side of road
+703,Walking along Road:  Not facing oncoming traffic
+928,Entering or Leaving Land Use:  Industrial Site
+929,Entering or Leaving Land Use:  Private house/farm
+511,Intentional or Criminal:  Deliberate homicide (only if succeeded)
+513,Intentional or Criminal:  Committed suicide (only if succeeded)
+512,Intentional or Criminal:  Intentional collision
+515,Intentional or Criminal:  Object deliberately thrown at or dropped on vehicle/shot at
+514,Intentional or Criminal:  Evading enforcement
+517,Intentional or Criminal:  Stolen vehicle
+516,Intentional or Criminal:  Object thrown from vehicle
+622,Steering:  Failed suddenly
+621,Steering:  Defective
+179,Wrong Lane/Turned From Wrong Position:  Motor vehicle in cycle lane
+178,Wrong Lane/Turned From Wrong Position:  Moved left to avoid slow vehicle
+177,Wrong Lane/Turned From Wrong Position:  Weaving or cut in on multi-lane roads
+176,Wrong Lane/Turned From Wrong Position:  Turned into incorrect lane
+175,Wrong Lane/Turned From Wrong Position:  Turned left from near centre line
+174,Wrong Lane/Turned From Wrong Position:  Turned right from left side of road
+173,Wrong Lane/Turned From Wrong Position:  Travelled straight ahead from turning lane or flush median
+172,Wrong Lane/Turned From Wrong Position:  Turned left from incorrect lane
+171,Wrong Lane/Turned From Wrong Position:  Turned right from incorrect lane
+977,Unconverted old codes (not used after 1998):  Old 920: Equestrian
+979,Unconverted old codes (not used after 1998):  Old 960: Special Codes
+978,Unconverted old codes (not used after 1998):  Old 950: Miscellaneous
+182,In Line of Traffic:  Travelling unreasonably slowly
+183,In Line of Traffic:  Motorist crowded cyclist
+181,In Line of Traffic:  Following too closely
+652,Mechanical:  Transmission failure (including chains and gears)
+653,Mechanical:  Accelerator or throttle jammed
+651,Mechanical:  Engine failure
+861,Street Lighting:  Failed
+863,Street Lighting:  Glare on wet road
+862,Street Lighting:  Inadequate
+864,Street Lighting:  Pedestrian crossing not adequately lighted
+354,Attention Diverted By::  Animal or insect in vehicle
+355,Attention Diverted By::  Trying to find intersection, house number, destination
+322,Did not Stop:  At steady red light
+323,Did not Stop:  At steady red arrow
+321,Did not Stop:  At stop sign
+326,Did not Stop:  At flashing red lights (Rail Xing, Fire Stn etc)
+327,Did not Stop:  For police or flag-person
+324,Did not Stop:  At steady amber light
+325,Did not Stop:  At steady amber arrow
+328,Did not Stop:  For school patrol/kea Xing
+201,Forbidden Movements:  Wrong way in one way street, motorway or roundabout
+203,Forbidden Movements:  Contrary to “in” or “out” only driveway sign
+202,Forbidden Movements:  When turning or U turning contrary to a sign
+205,Forbidden Movements:  On incorrect side of island or median
+204,Forbidden Movements:  Driving or Riding on Footpath
+207,Forbidden Movements:  In Car Park
+206,Forbidden Movements:  Contrary to “no entry” sign
+359,Attention Diverted By::  Cell phone or communications device
+358,Attention Diverted By::  Cigarette, radio, glove box etc
+669,Body or Chassis:  Broken axle
+668,Body or Chassis:  Wheel off
+667,Body or Chassis:  Bonnet catch failed
+666,Body or Chassis:  Inadequate or no safety chain
+665,Body or Chassis:  Inadequate tow coupling
+664,Body or Chassis:  Inadequate mudguards
+663,Body or Chassis:  Failure of door catch or door not shut
+662,Body or Chassis:  Suspension failure
+661,Body or Chassis:  Body, chassis or frame (cycle, m/c) failure
+692,Miscellaneous Vehicle:  Vehicle caught fire
+693,Miscellaneous Vehicle:  Being towed
+691,Miscellaneous Vehicle:  Emergency Vehicle attending emergency
+696,Miscellaneous Vehicle:  Dangerous goods
+694,Miscellaneous Vehicle:  Air-bag contributed to crash or injury
+695,Miscellaneous Vehicle:  Seatbelt/restraint absent or unusable
+995,Unconverted old codes (not used after 1998):  Old 738: Unattended child
+994,Unconverted old codes (not used after 1998):  Old 737: Physical defect or old age
+997,Unconverted old codes (not used after 1998):  Old 400: Specific Cyclist Faults
+996,Unconverted old codes (not used after 1998):  Old 952: Suicide
+991,Unconverted old codes (not used after 1998):  Old 503: In face of traffic
+990,Unconverted old codes (not used after 1998):  Old 273: Defective vision or illness (not sudden)
+993,Unconverted old codes (not used after 1998):  Old 512: Interfered with driver or overloaded vehicle
+992,Unconverted old codes (not used after 1998):  Old 504: Opened door in path of another party
+999,Unconverted old codes (not used after 1998):  Unknown
+998,Unconverted old codes (not used after 1998):  Old 930: Bicycle Faults
+121,Failed to Keep Left:  Swung wide on bend
+122,Failed to Keep Left:  Swung wide at intersection
+123,Failed to Keep Left:  Cutting corner on bend
+124,Failed to Keep Left:  Cutting corner at intersection
+125,Failed to Keep Left:  On straight section
+126,Failed to Keep Left:  Vehicle crossed raised median
+127,Failed to Keep Left:  Driving or riding abreast (cyclists more than 2 abreast)
+128,Failed to Keep Left:  Wandering or wobbling
+129,Failed to Keep Left:  Too far left/right
+414,Fatigue (Drowsy, Tired, Fell Asleep):  Worked long hours before driving
+415,Fatigue (Drowsy, Tired, Fell Asleep):  Exceeded driving hours
+411,Fatigue (Drowsy, Tired, Fell Asleep):  Long trip
+412,Fatigue (Drowsy, Tired, Fell Asleep):  Lack of sleep
+413,Fatigue (Drowsy, Tired, Fell Asleep):  Exhaust fumes
+921,Entering or Leaving Land Use:  Roadside Stall
+922,Entering or Leaving Land Use:  Service Station
+923,Entering or Leaving Land Use:  Specialised Liquor outlet
+924,Entering or Leaving Land Use:  Take away foods
+925,Entering or Leaving Land Use:  Shopping Complex
+926,Entering or Leaving Land Use:  Car parking building/area
+927,Entering or Leaving Land Use:  Other commercial
+312,Failed to Give Way:  Entering roadway not from driveway or intersection
+311,Failed to Give Way:  Failed to give way to pedestrian on footpath or verge
+310,Failed to Give Way:  Failed to Give way at one lane bridge/road
+832,Visibility Limited:  Crest
+833,Visibility Limited:  Building
+831,Visibility Limited:  Curve
+836,Visibility Limited:  Scrub or long grass
+837,Visibility Limited:  Bank
+834,Visibility Limited:  Trees
+835,Visibility Limited:  Hedge or fence
+838,Visibility Limited:  Temporary obstruction, dust or smoke
+839,Visibility Limited:  Parked vehicle
+360,Attention Diverted By::  Driver dazzled
+381,Misjudged speed, distance, size or position of::  Other vehicle coming from behind or alongside
+382,Misjudged speed, distance, size or position of::  Other vehicle coming from another direction with right of way
+383,Misjudged speed, distance, size or position of::  Pedestrian movement or intention
+384,Misjudged speed, distance, size or position of::  Towed vehicle, or while towing a vehicle
+385,Misjudged speed, distance, size or position of::  Size or position of fixed object or obstacle
+386,Misjudged speed, distance, size or position of::  Of own vehicle
+387,Misjudged speed, distance, size or position of::  Misjudged intentions of another party
+151,Overtaking:  Overtaking line of traffic or queue
+153,Overtaking:  Failed to notice oncoming traffic
+152,Overtaking:  Deliberately in the face of oncoming traffic
+155,Overtaking:  At no passing line
+157,Overtaking:  At an intersection without due care
+156,Overtaking:  With insufficient visibility
+731,Miscellaneous:  Overseas pedestrian
+730,Miscellaneous:  Pedestrian behind reversing/manoeuvring vehicle
+506,Illness and Disability:  Suicidal (but not successful)
+507,Illness and Disability:  Impaired ability due to old age
+504,Illness and Disability:  Medical illness (not sudden) flu, diabetes
+505,Illness and Disability:  Mental illness (depression, psychosis)
+502,Illness and Disability:  Physically disabled
+503,Illness and Disability:  Defective vision
+501,Illness and Disability:  Illness with no warning e.g. heart attack, unexpected epilepsy)
+631,Tyres:  Puncture or blowout
+632,Tyres:  Worn tread on tyre
+633,Tyres:  Incorrect tyre type
+634,Tyres:  Mixed treads/space savers
+160,Overtaking:  Vehicle signalling right turn
+161,Overtaking:  Without care at a pedestrian crossing
+872,Raised Islands and Roundabouts:  Traffic Island(s) ineffective, badly located or designed
+873,Raised Islands and Roundabouts:  Cyclist squeeze point
+871,Raised Islands and Roundabouts:  Traffic Island(s) difficult to see
+357,Attention Diverted By::  Emotionally upset
+356,Attention Diverted By::  Advertising or signs
+809,Slippery:  Surface bleeding/defective
+808,Slippery:  Recently graded
+353,Attention Diverted By::  Other traffic
+352,Attention Diverted By::  Scenery or persons outside vehicle
+351,Attention Diverted By::  Passengers
+803,Slippery:  Snow or hail
+802,Slippery:  Frost or ice
+801,Slippery:  Rain
+807,Slippery:  Painted markings
+806,Slippery:  Oil/Diesel/Fuel
+805,Slippery:  Mud
+804,Slippery:  Loose material on seal
+670,Body or Chassis:  Inconspicuous colour
+671,Body or Chassis:  Blind spot
+672,Body or Chassis:  Seat belt/restraint failed
+673,Body or Chassis:  Air-bag failed to inflate (fully)
+534,Miscellaneous Person:  Cyclist or M/cyclist wearing dark clothing
+533,Miscellaneous Person:  Equestrian not keeping to verge
+532,Miscellaneous Person:  Casualty thrown from vehicle
+531,Miscellaneous Person:  Casualty drowned
+988,Unconverted old codes (not used after 1998):  Old 236: Misjudged distance, size or position of vehicle
+989,Unconverted old codes (not used after 1998):  Old 238: In controlling skid
+982,Unconverted old codes (not used after 1998):  Old 138: Lost control – head on collision
+983,Unconverted old codes (not used after 1998):  Old 147: When changing lanes
+981,Unconverted old codes (not used after 1998):  Old 131: Swinging wide on bend or intersection
+986,Unconverted old codes (not used after 1998):  Old 225: Wrong way in one way street or other forbidden movement
+987,Unconverted old codes (not used after 1998):  Old 235: Misjudged speed of other vehicle
+984,Unconverted old codes (not used after 1998):  Old 157: Cut in
+985,Unconverted old codes (not used after 1998):  Old 188: At steady red/amber arrows
+115,Too Fast for Conditions:  When passing stationary school bus
+114,Too Fast for Conditions:  Approaching railway crossing
+117,Too Fast for Conditions:  At crash or emergency
+116,Too Fast for Conditions:  At temporary speed limit
+111,Too Fast for Conditions:  Cornering
+113,Too Fast for Conditions:  To give way at intersection
+112,Too Fast for Conditions:  On straight
+429,Incorrect use of vehicle controls:  Trailer coupling or safety chain not secured
+428,Incorrect use of vehicle controls:  Parking brake not fully applied
+421,Incorrect use of vehicle controls:  Started in gear
+914,Animals:  Farm animal attended, but out of control
+423,Incorrect use of vehicle controls:  Wrong pedal
+422,Incorrect use of vehicle controls:  Stalled engine
+911,Animals:  Household pet rushed out or playing
+424,Incorrect use of vehicle controls:  Footrest, stand
+913,Animals:  Farm animal attended, but inadequate warning or unexpected
+426,Incorrect use of vehicle controls:  Lights not switched on
+308,Failed to Give Way:  When entering roadway from driveway
+309,Failed to Give Way:  To traffic approaching or crossing from the right
+301,Failed to Give Way:  At Stop Sign
+302,Failed to Give Way:  At Give Way Sign
+303,Failed to Give Way:  When Turning to Non-turning traffic
+304,Failed to Give Way:  When deemed turning by markings, not geometry
+305,Failed to Give Way:  When turning left, to opposing right turning traffic
+306,Failed to Give Way:  To pedestrian on a crossing
+307,Failed to Give Way:  When turning at signals to pedestrians
+371,Did not see or look for another party until too late:  Behind when reversing / manoeuvring
+827,Obstructed:  Object flicked up by vehicle
+845,Visibility Limited:  Signals turned off
+844,Visibility Limited:  Necessary
+843,Visibility Limited:  Ineffective or inadequate
+842,Visibility Limited:  Badly located
+841,Visibility Limited:  Damaged, removed or malfunction
+840,Visibility Limited:  Signs and Signals
+821,Obstructed:  Fallen tree or branch
+823,Obstructed:  Flood waters, large puddles, ford
+822,Obstructed:  Slip or subsidence
+726,Miscellaneous:  Child escaped from supervision
+727,Miscellaneous:  Unsupervised child
+724,Miscellaneous:  Wearing dark clothing
+725,Miscellaneous:  Vision obscured by umbrella or clothing
+722,Miscellaneous:  Playing on road or unnecessarily on road
+723,Miscellaneous:  Working on road
+721,Miscellaneous:  Pushing, working on or unloading vehicle
+728,Miscellaneous:  Sitting/lying on road
+729,Miscellaneous:  Pedestrian from School bus
+605,Lights and Reflectors at Fault or Dirty:  Tail-lights inadequate or no tail-lights
+604,Lights and Reflectors at Fault or Dirty:  Brake-lights or indicators faulty or not fitted
+607,Lights and Reflectors at Fault or Dirty:  Lights or reflectors obscured
+606,Lights and Reflectors at Fault or Dirty:  Reflectors inadequate or no reflectors
+601,Lights and Reflectors at Fault or Dirty:  Dazzling headlights
+154,Overtaking:  Misjudged speed or distance of oncoming traffic
+603,Lights and Reflectors at Fault or Dirty:  Headlights failed suddenly
+602,Lights and Reflectors at Fault or Dirty:  Headlights inadequate or no headlights
+159,Overtaking:  Cut in after overtaking
+158,Overtaking:  On left without due care
