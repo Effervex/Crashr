@@ -1,5 +1,6 @@
 package bbw.com.crashr.db;
 
+import java.io.IOException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * Created by henry on 4/07/15.
@@ -25,7 +27,24 @@ public class CrashDataSource {
     }
 
     public void open() {
+        try {
+            dbHelper.createDataBase();
+            dbHelper.openDataBase();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        dbHelper.close();
         database = dbHelper.getWritableDatabase();
+
+        Cursor c = database.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+        c.moveToFirst();
+
+        while(!c.isAfterLast()) {
+            Log.w("DB", c.getString(0));
+            c.moveToNext();
+        }
     }
 
     public void close() {
