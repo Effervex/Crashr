@@ -76,7 +76,7 @@ public class CrashrMain extends AppCompatActivity {
             @Override
             public View makeView() {
                 TextView view = new TextView(CrashrMain.this);
-                view.setTextSize(32);
+                view.setTextSize(24);
                 view.setTextColor(getResources().getColor(R.color.text_colour));
                 return view;
             }
@@ -216,4 +216,15 @@ public class CrashrMain extends AppCompatActivity {
             locationHandler_.postDelayed(this, APP_UPDATE_TIME);
         }
     };
+
+    public void moreHazardInfo(View view) {
+        String provider = locManager_.getBestProvider(criteria_, false);
+        Location location = locManager_.getLastKnownLocation(provider);
+        double lat = location.getLatitude();
+        double lon = location.getLongitude();
+        List<Incident> incidents = dataSource_.getLocalisedIncidents(lat - area_, lat + area_,
+                lon - area_, lon + area_);
+
+        
+    }
 }
