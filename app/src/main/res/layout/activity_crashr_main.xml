@@ -9,4 +9,54 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CrashrMain"
     android:background="@color/main_background">
+
+    <TextSwitcher
+        android:id="@+id/hazard1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_colour"
+        android:text="@string/loading"
+        android:textSize="@dimen/text_size"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextSwitcher
+        android:id="@+id/hazard2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_colour"
+        android:text="@string/loading"
+        android:textSize="@dimen/text_size"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/hazard1"/>
+
+    <TextSwitcher
+        android:id="@+id/hazard3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_colour"
+        android:text="@string/loading"
+        android:textSize="@dimen/text_size"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/hazard2"/>
+
+    <TextSwitcher
+        android:id="@+id/hazard4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_colour"
+        android:text="@string/loading"
+        android:textSize="@dimen/text_size"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/hazard3"/>
+
+    <TextSwitcher
+        android:id="@+id/hazard5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_colour"
+        android:text="@string/loading"
+        android:textSize="@dimen/text_size"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/hazard4"/>
 </RelativeLayout>

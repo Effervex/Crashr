@@ -6,10 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -22,19 +23,37 @@ public class CrashrMain extends AppCompatActivity {
     private static final long APP_UPDATE_TIME = TimeUnit.SECONDS.toMillis(10);
     private static final int NUM_HAZARDS = 5;
     private Handler locationHandler_;
-    private ArrayList<Hazard> hazards_;
-    private ArrayList<TextView> hazardViews_;
+    private Hazard[] hazards_;
+    private TextSwitcher[] hazardViews2_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        hazards_ = new ArrayList<>();
+        hazards_ = new Hazard[NUM_HAZARDS];
 
         locationHandler_ = new Handler();
         locationHandler_.postDelayed(updateLocationThread, 0);
 
         setContentView(R.layout.activity_crashr_main);
+    }
+
+    private void initSwitcher(TextSwitcher switcher) {
+        switcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                TextView view = new TextView(CrashrMain.this);
+                view.setTextSize(32);
+                view.setTextColor(getResources().getColor(R.color.text_colour));
+                return view;
+            }
+        });
+
+        Animation in = AnimationUtils.loadAnimation(this, R.anim.abc_fade_in);
+        Animation out = AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);
+
+        switcher.setInAnimation(in);
+        switcher.setOutAnimation(out);
     }
 
     @Override
@@ -60,81 +79,35 @@ public class CrashrMain extends AppCompatActivity {
     }
 
     private void redrawHazards() {
-        // Get SQL data
-        ArrayList<Hazard> newHazards = getHazardRankings(NUM_HAZARDS);
-
-        // Update the hazards list
-        View prevText = null;
-        ArrayList<TextView> newViews = new ArrayList<>();
-        for (int i = 0; i < newHazards.size(); i++) {
-            Hazard currentHazard = newHazards.get(i);
-            // Check if the old hazards contained a hazard of the same type
-            TextView currentView = null;
-            if (hazards_.contains(newHazards.get(i))) {
-                int index = hazards_.indexOf(newHazards.get(i));
-                Hazard existing = hazards_.get(index);
-                existing.setText(currentHazard.getText());
-                newHazards.set(i, existing);
-                // TODO Animate movement of hazards
-
-                currentView = moveView(index, i, existing);
-            } else {
-                currentView = addView(i, currentHazard, newViews);
-            }
-            newViews.add(currentView);
+        if (hazardViews2_ == null) {
+            hazardViews2_ = new TextSwitcher[NUM_HAZARDS];
+            hazardViews2_[0] = (TextSwitcher) findViewById(R.id.hazard1);
+            hazardViews2_[1] = (TextSwitcher) findViewById(R.id.hazard2);
+            hazardViews2_[2] = (TextSwitcher) findViewById(R.id.hazard3);
+            hazardViews2_[3] = (TextSwitcher) findViewById(R.id.hazard4);
+            hazardViews2_[4] = (TextSwitcher) findViewById(R.id.hazard5);
+            for (int i = 0; i < hazardViews2_.length; i++)
+                initSwitcher(hazardViews2_[i]);
         }
-        for (Hazard hazard : hazards_) {
-            if (!newHazards.contains(hazard))
-                removeView(hazards_.indexOf(hazard), hazard);
+
+        // Get SQL data
+        Hazard[] newHazards = getHazardRankings(NUM_HAZARDS);
+
+        for (int i = 0; i < newHazards.length; i++) {
+            if (hazards_[i] == null || !hazards_[i].equals(newHazards[i]))
+                hazardViews2_[i].setText(newHazards[i].getText());
         }
         hazards_ = newHazards;
-        hazardViews_ = newViews;
-    }
-
-    private void removeView(int startLocation, Hazard removedHazard) {
-
-    }
-
-    private TextView addView(int endLocation, Hazard addedHazard, ArrayList<TextView> newViews) {
-        // Handling location
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.main_layout);
-        RelativeLayout.LayoutParams params =
-                new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-        if (endLocation == 0)
-            params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        else
-            params.addRule(RelativeLayout.BELOW, newViews.get(endLocation - 1).getId());
-        params.addRule(RelativeLayout.CENTER_HORIZONTAL);
-
-        TextView newView = new TextView(this);
-        newView.setText(addedHazard.getText());
-        newView.setTextSize(32);
-        newView.setLayoutParams(params);
-        newView.setId(endLocation + 1);
-        newView.setTextColor(getResources().getColor(R.color.text_colour));
-
-        layout.addView(newView);
-        float location = newView.getY();
-        TranslateAnimation translateAnimation = new TranslateAnimation(0, 0, -50, location);
-
-        newView.setAnimation(translateAnimation);
-
-        return newView;
-    }
-
-    private TextView moveView(int startLocation, int endLocation, Hazard movedHazard) {
-        return null;
     }
 
     /**
      * Retrieves the hazard data from the SQL database and processes it to be locally relevant.
      */
-    private ArrayList<Hazard> getHazardRankings(int numHazards) {
-        ArrayList<Hazard> hazards = new ArrayList<>();
-        for (int i = 0; i< numHazards; i++) {
+    private Hazard[] getHazardRankings(int numHazards) {
+        Hazard[] hazards = new Hazard[numHazards];
+        for (int i = 0; i < numHazards; i++) {
             // Example data
-            hazards.add(new Hazard("Example Hazard #" + i, "Alcohol" + i));
+            hazards[i] = new Hazard("Example Hazard #" + i, "Alcohol" + i);
         }
         return hazards;
     }
