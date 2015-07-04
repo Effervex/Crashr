@@ -17,6 +17,10 @@
 package bbw.com.crashr;
 
 import android.graphics.Color;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Handler;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -35,7 +39,12 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+import bbw.com.crashr.db.CrashDataSource;
+import bbw.com.crashr.db.Incident;
 
 /**
  * A demo of the Heatmaps library. Demonstrates how the HeatmapTileProvider can be used to create
@@ -43,6 +52,25 @@ import java.util.Scanner;
  * different colors representing areas of high and low concentration/combined intensity of points.
  */
 public class HeatmapsDemoActivity extends BaseDemoActivity {
+
+    private final double HAMILTON_LNG = 175.301396;
+    private final double HAMILTON_LAT = 37.786127;
+
+    private static final long APP_UPDATE_TIME = TimeUnit.SECONDS.toMillis(30);
+
+    /**
+     * A ongoing update thread for querying the location.
+     */
+    private Runnable updateLocationThread = new Runnable() {
+
+        @Override
+        public void run() {
+            updateMap();
+            locationHandler_.postDelayed(this, APP_UPDATE_TIME);
+        }
+    };
+
+    private Handler locationHandler_;
 
     /**
      * Alternative radius for convolution
@@ -87,21 +115,25 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
         return R.layout.heatmaps_demo;
     }
 
-    @Override
-    protected void startDemo() {
-        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-25, 143), 4));
+    private void updateMap() {
 
-        // Set up the spinner/dropdown list
-        //Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        //        R.array.heatmaps_datasets_array, android.R.layout.simple_spinner_item);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //spinner.setAdapter(adapter);
-        //spinner.setOnItemSelectedListener(new SpinnerActivity());
+        CrashDataSource dataSource = CrashrMain.dataSource_;
+        LocationManager locManager = CrashrMain.locManager_;
+        Criteria criteria = CrashrMain.criteria_;
+        double area = CrashrMain.area_;
+
+        // Get location
+        String provider = locManager.getBestProvider(criteria, false);
+        Location location = locManager.getLastKnownLocation(provider);
+        double lat = location.getLatitude();
+        double lon = location.getLongitude();
+
+        List<Incident> incidents = dataSource.getLocalisedIncidents(lat - area, lat + area, lon - area, lon + area);
 
         try {
-            mLists.put("crashes", new DataSet(readItems(R.raw.tmp)));
-        } catch (JSONException e) {
+            //mLists.put("crashes", new DataSet(readItems(R.raw.tmp)));
+            mLists.put("crashes", new DataSet(readIncidents(incidents)));
+        } catch (Exception e) {
             Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
         }
 
@@ -114,12 +146,33 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
             mOverlay.clearTileCache();
         }
 
+    }
+
+    @Override
+    protected void startDemo() {
+
+        locationHandler_ = new Handler();
+        locationHandler_.postDelayed(updateLocationThread, 0);
+
+        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(
+                new LatLng(HAMILTON_LAT, HAMILTON_LNG), 4));
+
         getMap().setMyLocationEnabled(true);
+
+        //updateMap();
 
         // Make the handler deal with the map
         // Input: list of WeightedLatLngs, minimum and maximum zoom levels to calculate custom
         // intensity from, and the map to draw the heatmap on
         // radius, gradient and opacity not specified, so default are used
+    }
+
+    private ArrayList<LatLng> readIncidents( List<Incident> incidents ) {
+        ArrayList<LatLng> list = new ArrayList<>();
+        for(Incident incident : incidents) {
+            list.add( new LatLng(incident.latitude, incident.longitude) );
+        }
+        return list;
     }
 
     // Datasets from http://data.gov.au

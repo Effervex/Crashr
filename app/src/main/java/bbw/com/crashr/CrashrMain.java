@@ -44,10 +44,11 @@ public class CrashrMain extends AppCompatActivity {
     private CauseHelper causeHelper_;
 
     // SQL access
-    private CrashDataSource dataSource_;
-    private LocationManager locManager_;
-    private Criteria criteria_;
-    private double area_ = 1/110d;
+    public static CrashDataSource dataSource_;
+    public static LocationManager locManager_;
+
+    public static Criteria criteria_;
+    public static double area_ = 1/110d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
