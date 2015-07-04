@@ -1,7 +1,6 @@
 package bbw.com.crashr.db;
 
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 /**
  * Created by henry on 4/07/15.
@@ -14,34 +13,34 @@ public class IncidentsTable {
             + TABLE_INCIDENTS
             + "("
             + "_id integer primary key autoincrement, "
-            + "TLA_NAME text, "
-            + "CRASH_ROAD text, "
-            + "CRASH_DIST integer, "
-            + "CRASH_DIRN text, "
-            + "INTSN integer, "
-            + "SIDE_ROAD text, "
-            + "CRASH_ID integer, "
+            //+ "TLA_NAME text, "
+            //+ "CRASH_ROAD text, "
+            //+ "CRASH_DIST integer, "
+            //+ "CRASH_DIRN text, "
+            //+ "INTSN integer, "
+            //+ "SIDE_ROAD text, "
+            //+ "CRASH_ID integer, "
             + "CRASH_DATE text, "
-            + "CRASH_DOW text, "
+            //+ "CRASH_DOW text, "
             + "CRASH_TIME integer, "
-            + "MVMT text, "
+            //+ "MVMT text, "
             + "CAUSES text, "
             + "OBJECTS_STRUCK text, "
-            + "ROAD_CURVE text, "
+            //+ "ROAD_CURVE text, "
             + "ROAD_WET text, "
-            + "LIGHT text, "
-            + "WTHRA text, "
-            + "JUNC_TYPE text, "
-            + "TRAF_CTRL text, "
-            + "ROAD_MARK text, "
+            //+ "LIGHT text, "
+            //+ "WTHRA text, "
+            //+ "JUNC_TYPE text, "
+            //+ "TRAF_CTRL text, "
+            //+ "ROAD_MARK text, "
             + "SPD_LIM integer, "
             + "CRASH_FATAL_CNT integer, "
             + "CRASH_SEV_CNT integer, "
             + "CRASH_MIN_CNT integer, "
-            + "PERS_AGE1 integer, "
-            + "PERS_AGE2 integer, "
-            + "LAT integer, "
-            + "LNG integer"
+            //+ "PERS_AGE1 integer, "
+            //+ "PERS_AGE2 integer, "
+            + "LAT real, "
+            + "LNG real"
             + ");";
 
     public static void onCreate(SQLiteDatabase db) {
