@@ -19,12 +19,12 @@ public class CrashDataSource {
     private CrashDBHelper dbHelper;
     private SimpleDateFormat dateFormat;
 
-    public CrashDataSource(Context context) {
+    public CrashDataSource(Context context) throws SQLException {
         dbHelper = new CrashDBHelper(context);
         dateFormat = new SimpleDateFormat("dd/MM/yyHHmm");
     }
 
-    public void open() throws SQLException {
+    public void open() {
         database = dbHelper.getWritableDatabase();
     }
 
@@ -57,21 +57,21 @@ public class CrashDataSource {
         i._id = cursor.getLong(0);
 
         try {
-            i.date = dateFormat.parse(cursor.getString(1));
+            i.date = dateFormat.parse(cursor.getString(1) + Long.toString(cursor.getLong(2)));
         }
         catch(Exception e) {
             i.date = new Date();
         }
 
-        i.causes = cursor.getString(2).split(" ");
-        i.objectsStruck = cursor.getString(3);
-        i.roadWet = cursor.getString(4);
-        i.speedLimit = cursor.getLong(5);
-        i.fatalCount = cursor.getLong(6);
-        i.severeCount = cursor.getLong(7);
-        i.minorCount = cursor.getLong(8);
-        i.latitude = cursor.getDouble(9);
-        i.longitude = cursor.getDouble(10);
+        i.causes = cursor.getString(3).split(" ");
+        i.objectsStruck = cursor.getString(4);
+        i.roadWet = cursor.getString(5);
+        i.speedLimit = cursor.getLong(6);
+        i.fatalCount = cursor.getLong(7);
+        i.severeCount = cursor.getLong(8);
+        i.minorCount = cursor.getLong(9);
+        i.latitude = cursor.getDouble(10);
+        i.longitude = cursor.getDouble(11);
 
         return i;
     }
