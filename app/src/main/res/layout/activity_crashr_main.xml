@@ -18,7 +18,8 @@
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
         android:layout_alignParentTop="true"
-        android:padding="@dimen/text_padding"/>
+        android:padding="@dimen/text_padding"
+        android:onClick="moreHazardInfo"/>
 
     <TextSwitcher
         android:id="@+id/hazard2"
