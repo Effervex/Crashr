@@ -17,7 +17,6 @@
         android:textColor="@color/text_colour"
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:padding="@dimen/text_padding"/>
 
@@ -28,7 +27,6 @@
         android:textColor="@color/text_colour"
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/hazard1"
         android:padding="@dimen/text_padding"/>
 
@@ -39,7 +37,6 @@
         android:textColor="@color/text_colour"
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/hazard2"
         android:padding="@dimen/text_padding"/>
 
@@ -50,7 +47,6 @@
         android:textColor="@color/text_colour"
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/hazard3"
         android:padding="@dimen/text_padding"/>
 
@@ -61,7 +57,6 @@
         android:textColor="@color/text_colour"
         android:text="@string/loading"
         android:textSize="@dimen/text_size"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/hazard4"
         android:padding="@dimen/text_padding"/>
 </RelativeLayout>

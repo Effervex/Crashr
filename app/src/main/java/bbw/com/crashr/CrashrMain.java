@@ -17,6 +17,8 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +29,6 @@ import java.util.concurrent.TimeUnit;
 
 import bbw.com.crashr.db.CrashDataSource;
 import bbw.com.crashr.db.Incident;
-
 
 public class CrashrMain extends AppCompatActivity {
     /**
@@ -40,6 +41,8 @@ public class CrashrMain extends AppCompatActivity {
     private Hazard[] hazards_;
     private TextSwitcher[] hazardViews_;
 
+    private CauseHelper causeHelper_;
+
     // SQL access
     private CrashDataSource dataSource_;
     private LocationManager locManager_;
@@ -51,12 +54,16 @@ public class CrashrMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         hazards_ = new Hazard[NUM_HAZARDS];
+
         dataSource_ = new CrashDataSource(this);
         dataSource_.open();
+
         locManager_ = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         criteria_ = new Criteria();
         criteria_.setAccuracy(Criteria.ACCURACY_COARSE);
         criteria_.setCostAllowed(false);
+
+        causeHelper_ = new CauseHelper(getResources());
 
         locationHandler_ = new Handler();
         locationHandler_.postDelayed(updateLocationThread, 0);
@@ -169,18 +176,30 @@ public class CrashrMain extends AppCompatActivity {
         return hazards;
     }
 
+    /**
+     * Processes the incidents, gathering the data together into counts.
+     *
+     * @param incidents The incidents to process.
+     * @return A sorted map of incidents, from most to least
+     */
     private SortedMap<String,Integer> processIncidents(List<Incident> incidents) {
         Map<String, Integer> countMap = new HashMap<>();
         for (Incident inc : incidents) {
             String[] causes = inc.causes;
             for (String cause : causes) {
-                if (!countMap.containsKey(cause))
-                    countMap.put(cause, 1);
+                if (cause.isEmpty())
+                    continue;
+                String causeCategory = causeHelper_.getCategory(cause);
+                if (!causeCategory.equals("ERROR") && !countMap.containsKey(causeCategory))
+                    countMap.put(causeCategory, 1);
                 else
-                    countMap.put(cause, countMap.get(cause) + 1);
+                    countMap.put(causeCategory, countMap.get(causeCategory) + 1);
             }
         }
-        SortedMap<String, Integer> sortedMap = new TreeMap<>(new ValueComparator(countMap));
+
+        Comparator<String> comparison = new ValueComparator<>(countMap);
+        SortedMap<String, Integer> sortedMap = new TreeMap<>(comparison);
+        sortedMap.putAll(countMap);
         return sortedMap;
     }
 
