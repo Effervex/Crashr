@@ -114,6 +114,8 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
             mOverlay.clearTileCache();
         }
 
+        getMap().setMyLocationEnabled(true);
+
         // Make the handler deal with the map
         // Input: list of WeightedLatLngs, minimum and maximum zoom levels to calculate custom
         // intensity from, and the map to draw the heatmap on
