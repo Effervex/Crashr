@@ -189,8 +189,10 @@ public class CrashrMain extends AppCompatActivity {
             for (String cause : causes) {
                 if (cause.isEmpty())
                     continue;
-                String causeCategory = causeHelper_.getCategory(cause);
-                if (!causeCategory.equals("ERROR") && !countMap.containsKey(causeCategory))
+                String causeCategory = causeHelper_.getCause(cause);
+                if (causeCategory.equals("ERROR"))
+                    continue;
+                if (!countMap.containsKey(causeCategory))
                     countMap.put(causeCategory, 1);
                 else
                     countMap.put(causeCategory, countMap.get(causeCategory) + 1);
