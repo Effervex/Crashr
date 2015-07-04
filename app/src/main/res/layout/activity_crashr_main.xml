@@ -1,63 +1,66 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/main_layout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".CrashrMain"
-    android:background="@color/main_background">
+    tools:context=".CrashrMain">
 
     <TextSwitcher
         android:id="@+id/hazard1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_colour"
-        android:text="@string/loading"
-        android:textSize="@dimen/text_size"
         android:layout_alignParentTop="true"
+        android:onClick="moreHazardInfo"
         android:padding="@dimen/text_padding"
-        android:onClick="moreHazardInfo"/>
+        android:text="@string/loading"
+        android:textColor="@color/text_colour"
+        android:textSize="@dimen/text_size" />
 
     <TextSwitcher
         android:id="@+id/hazard2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_colour"
-        android:text="@string/loading"
-        android:textSize="@dimen/text_size"
         android:layout_below="@id/hazard1"
-        android:padding="@dimen/text_padding"/>
+        android:onClick="moreHazardInfo"
+        android:padding="@dimen/text_padding"
+        android:text="@string/loading"
+        android:textColor="@color/text_colour"
+        android:textSize="@dimen/text_size" />
 
     <TextSwitcher
         android:id="@+id/hazard3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_colour"
-        android:text="@string/loading"
-        android:textSize="@dimen/text_size"
         android:layout_below="@id/hazard2"
-        android:padding="@dimen/text_padding"/>
+        android:padding="@dimen/text_padding"
+        android:text="@string/loading"
+        android:textColor="@color/text_colour"
+        android:textSize="@dimen/text_size" />
 
     <TextSwitcher
         android:id="@+id/hazard4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_colour"
-        android:text="@string/loading"
-        android:textSize="@dimen/text_size"
         android:layout_below="@id/hazard3"
-        android:padding="@dimen/text_padding"/>
+        android:onClick="moreHazardInfo"
+        android:padding="@dimen/text_padding"
+        android:text="@string/loading"
+        android:textColor="@color/text_colour"
+        android:textSize="@dimen/text_size" />
 
     <TextSwitcher
         android:id="@+id/hazard5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_colour"
-        android:text="@string/loading"
-        android:textSize="@dimen/text_size"
         android:layout_below="@id/hazard4"
-        android:padding="@dimen/text_padding"/>
+        android:onClick="moreHazardInfo"
+        android:padding="@dimen/text_padding"
+        android:text="@string/loading"
+        android:textColor="@color/text_colour"
+        android:textSize="@dimen/text_size" />
 </RelativeLayout>

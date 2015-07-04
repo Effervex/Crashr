@@ -125,6 +125,8 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
         // Get location
         String provider = locManager.getBestProvider(criteria, false);
         Location location = locManager.getLastKnownLocation(provider);
+        if (location == null)
+            return;
         double lat = location.getLatitude();
         double lon = location.getLongitude();
 

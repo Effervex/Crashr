@@ -143,9 +143,10 @@ public class CrashrMain extends AppCompatActivity {
 
         // Get SQL data
         Hazard[] newHazards = getHazardRankings(NUM_HAZARDS);
-
-        for (int i = 0; i < newHazards.length; i++) {
-            if (hazards_[i] == null || !hazards_[i].equals(newHazards[i]))
+        for (int i = 0; i < NUM_HAZARDS; i++) {
+            if (newHazards == null)
+                hazardViews_[i].setText("Unavailable");
+            else if (hazards_[i] == null || !hazards_[i].equals(newHazards[i]))
                 hazardViews_[i].setText(newHazards[i].getText());
         }
         hazards_ = newHazards;
@@ -160,11 +161,9 @@ public class CrashrMain extends AppCompatActivity {
         Hazard[] hazards = new Hazard[numHazards];
 
         // Get location
-        String provider = locManager_.getBestProvider(criteria_, false);
-        Location location = locManager_.getLastKnownLocation(provider);
-        double lat = location.getLatitude();
-        double lon = location.getLongitude();
-        List<Incident> incidents = dataSource_.getLocalisedIncidents(lat - area_, lat + area_, lon - area_, lon + area_);
+        List<Incident> incidents = getIncidents();
+        if (incidents == null)
+            return null;
 
         // Process data
         Map<String, Integer> incidentCounts = processIncidents(incidents);
@@ -175,6 +174,16 @@ public class CrashrMain extends AppCompatActivity {
             hazards[i] = new Hazard(incidentCounts.get(nextKey) + ": " + nextKey, nextKey);
         }
         return hazards;
+    }
+
+    private List<Incident> getIncidents() {
+        String provider = locManager_.getBestProvider(criteria_, false);
+        Location location = locManager_.getLastKnownLocation(provider);
+        if (location == null)
+            return null;
+        double lat = location.getLatitude();
+        double lon = location.getLongitude();
+        return dataSource_.getLocalisedIncidents(lat - area_, lat + area_, lon - area_, lon + area_);
     }
 
     /**
@@ -219,13 +228,10 @@ public class CrashrMain extends AppCompatActivity {
     };
 
     public void moreHazardInfo(View view) {
-        String provider = locManager_.getBestProvider(criteria_, false);
-        Location location = locManager_.getLastKnownLocation(provider);
-        double lat = location.getLatitude();
-        double lon = location.getLongitude();
-        List<Incident> incidents = dataSource_.getLocalisedIncidents(lat - area_, lat + area_,
-                lon - area_, lon + area_);
+        List<Incident> incidents = getIncidents();
+//        if (incidents == null)
+            // Data unavilable
 
-        
+        System.out.println("Triggered by " + view.toString());
     }
 }
