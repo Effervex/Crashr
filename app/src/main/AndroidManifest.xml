@@ -17,7 +17,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:largeHeap="true" >
         <activity
             android:name=".CrashrMain"
             android:label="@string/app_name" >
@@ -42,6 +43,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="bbw.com.crashr.CrashrMain" />
         </activity>
+
+        <activity
+            android:name=".HeatmapsDemoActivity"
+            android:label="Heatmap" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="bbw.com.crashr.CrashrMain" />
+        </activity>
+
     </application>
 
 </manifest>
