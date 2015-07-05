@@ -5,11 +5,9 @@ package bbw.com.crashr;
  */
 public class Hazard {
     private String hazardText_;
-    private String hazardType_;
 
-    public Hazard(String hazardText, String hazardType) {
+    public Hazard(String hazardText) {
         hazardText_ = hazardText;
-        hazardType_ = hazardType;
     }
 
     @Override
@@ -21,14 +19,14 @@ public class Hazard {
     public boolean equals(Object o) {
         if (!(o instanceof Hazard))
             return false;
-        if (!hazardType_.equals(((Hazard) o).hazardType_))
+        if (!hazardText_.equals(((Hazard) o).hazardText_))
             return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        return hazardType_.hashCode();
+        return hazardText_.hashCode();
     }
 
     public String getText() {

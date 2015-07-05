@@ -5,4 +5,5 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_crashr_map">Map</string>
     <string name="loading">Loading...</string>
+    <string name="title_activity_more_details">Crashr More Details</string>
 </resources>

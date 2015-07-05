@@ -45,6 +45,7 @@ import java.util.concurrent.TimeUnit;
 
 import bbw.com.crashr.db.CrashDataSource;
 import bbw.com.crashr.db.Incident;
+import bbw.com.crashr.db.IncidentHelper;
 
 /**
  * A demo of the Heatmaps library. Demonstrates how the HeatmapTileProvider can be used to create
@@ -117,20 +118,9 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
 
     private void updateMap() {
 
-        CrashDataSource dataSource = CrashrMain.dataSource_;
-        LocationManager locManager = CrashrMain.locManager_;
-        Criteria criteria = CrashrMain.criteria_;
-        double area = CrashrMain.area_;
-
-        // Get location
-        String provider = locManager.getBestProvider(criteria, false);
-        Location location = locManager.getLastKnownLocation(provider);
-        if (location == null)
+        List<Incident> incidents = IncidentHelper.getInstance(this).getIncidents();
+        if (incidents == null)
             return;
-        double lat = location.getLatitude();
-        double lon = location.getLongitude();
-
-        List<Incident> incidents = dataSource.getLocalisedIncidents(lat - area, lat + area, lon - area, lon + area);
 
         try {
             //mLists.put("crashes", new DataSet(readItems(R.raw.tmp)));

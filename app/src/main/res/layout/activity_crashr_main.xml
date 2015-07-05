@@ -19,7 +19,9 @@
         android:padding="@dimen/text_padding"
         android:text="@string/loading"
         android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size" />
+        android:textSize="@dimen/text_size"
+        android:measureAllChildren="false"
+        android:animateLayoutChanges="true"/>
 
     <TextSwitcher
         android:id="@+id/hazard2"
@@ -30,7 +32,9 @@
         android:padding="@dimen/text_padding"
         android:text="@string/loading"
         android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size" />
+        android:textSize="@dimen/text_size"
+        android:measureAllChildren="false"
+        android:animateLayoutChanges="true"/>
 
     <TextSwitcher
         android:id="@+id/hazard3"
@@ -40,7 +44,9 @@
         android:padding="@dimen/text_padding"
         android:text="@string/loading"
         android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size" />
+        android:textSize="@dimen/text_size"
+        android:measureAllChildren="false"
+        android:animateLayoutChanges="true"/>
 
     <TextSwitcher
         android:id="@+id/hazard4"
@@ -51,7 +57,9 @@
         android:padding="@dimen/text_padding"
         android:text="@string/loading"
         android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size" />
+        android:textSize="@dimen/text_size"
+        android:measureAllChildren="false"
+        android:animateLayoutChanges="true"/>
 
     <TextSwitcher
         android:id="@+id/hazard5"
@@ -62,5 +70,7 @@
         android:padding="@dimen/text_padding"
         android:text="@string/loading"
         android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size" />
+        android:textSize="@dimen/text_size"
+        android:measureAllChildren="false"
+        android:animateLayoutChanges="true"/>
 </RelativeLayout>

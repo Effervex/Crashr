@@ -15,22 +15,32 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import java.util.Collections;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationServices;
+
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.SortedSet;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import bbw.com.crashr.db.CrashDataSource;
 import bbw.com.crashr.db.Incident;
+import bbw.com.crashr.db.IncidentHelper;
 
-public class CrashrMain extends AppCompatActivity {
+public class CrashrMain extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, LocationListener {
     /**
      * Update every 10 seconds.
      */
@@ -41,30 +51,13 @@ public class CrashrMain extends AppCompatActivity {
     private Hazard[] hazards_;
     private TextSwitcher[] hazardViews_;
 
-    private CauseHelper causeHelper_;
-
-    // SQL access
-    public static CrashDataSource dataSource_;
-    public static LocationManager locManager_;
-
-    public static Criteria criteria_;
-    public static double area_ = 1/110d;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         hazards_ = new Hazard[NUM_HAZARDS];
 
-        dataSource_ = new CrashDataSource(this);
-        dataSource_.open();
-
-        locManager_ = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        criteria_ = new Criteria();
-        criteria_.setAccuracy(Criteria.ACCURACY_COARSE);
-        criteria_.setCostAllowed(false);
-
-        causeHelper_ = new CauseHelper(getResources());
+        IncidentHelper.getInstance(this);
 
         locationHandler_ = new Handler();
         locationHandler_.postDelayed(updateLocationThread, 0);
@@ -137,8 +130,8 @@ public class CrashrMain extends AppCompatActivity {
             hazardViews_[2] = (TextSwitcher) findViewById(R.id.hazard3);
             hazardViews_[3] = (TextSwitcher) findViewById(R.id.hazard4);
             hazardViews_[4] = (TextSwitcher) findViewById(R.id.hazard5);
-            for (int i = 0; i < hazardViews_.length; i++)
-                initSwitcher(hazardViews_[i]);
+            for (TextSwitcher ts : hazardViews_)
+                initSwitcher(ts);
         }
 
         // Get SQL data
@@ -146,10 +139,16 @@ public class CrashrMain extends AppCompatActivity {
         for (int i = 0; i < NUM_HAZARDS; i++) {
             if (newHazards == null)
                 hazardViews_[i].setText("Unavailable");
-            else if (hazards_[i] == null || !hazards_[i].equals(newHazards[i]))
+            else if (newHazards[i] == null || i >= newHazards.length)
+                hazardViews_[i].setText("");
+            else if (hazards_[i] == null || !hazards_[i].equals(newHazards[i])) {
                 hazardViews_[i].setText(newHazards[i].getText());
+            }
         }
-        hazards_ = newHazards;
+        if (newHazards == null)
+            hazards_ = new Hazard[NUM_HAZARDS];
+        else
+            hazards_ = Arrays.copyOf(newHazards, NUM_HAZARDS);
     }
 
     /**
@@ -161,7 +160,7 @@ public class CrashrMain extends AppCompatActivity {
         Hazard[] hazards = new Hazard[numHazards];
 
         // Get location
-        List<Incident> incidents = getIncidents();
+        List<Incident> incidents = IncidentHelper.getInstance(this).getIncidents();
         if (incidents == null)
             return null;
 
@@ -171,19 +170,9 @@ public class CrashrMain extends AppCompatActivity {
         for (int i = 0; i < numHazards && iter.hasNext(); i++) {
             // Example data
             String nextKey = iter.next();
-            hazards[i] = new Hazard(incidentCounts.get(nextKey) + ": " + nextKey, nextKey);
+            hazards[i] = new Hazard(nextKey);
         }
         return hazards;
-    }
-
-    private List<Incident> getIncidents() {
-        String provider = locManager_.getBestProvider(criteria_, false);
-        Location location = locManager_.getLastKnownLocation(provider);
-        if (location == null)
-            return null;
-        double lat = location.getLatitude();
-        double lon = location.getLongitude();
-        return dataSource_.getLocalisedIncidents(lat - area_, lat + area_, lon - area_, lon + area_);
     }
 
     /**
@@ -199,7 +188,7 @@ public class CrashrMain extends AppCompatActivity {
             for (String cause : causes) {
                 if (cause.isEmpty())
                     continue;
-                String causeCategory = causeHelper_.getCause(cause);
+                String causeCategory = IncidentHelper.getInstance(this).getCauseHelper().getCause(cause);
                 if (causeCategory.equals("ERROR"))
                     continue;
                 if (!countMap.containsKey(causeCategory))
@@ -228,10 +217,31 @@ public class CrashrMain extends AppCompatActivity {
     };
 
     public void moreHazardInfo(View view) {
-        List<Incident> incidents = getIncidents();
-//        if (incidents == null)
-            // Data unavilable
+        // Open a new Intent
+        TextView textView = (TextView) ((TextSwitcher) view).getCurrentView();
+        String viewString = textView.getText().toString();
+        Intent intent = new Intent(this, MoreDetails.class);
+        intent.putExtra("INCIDENT", viewString);
+        startActivity(intent);
+    }
 
-        System.out.println("Triggered by " + view.toString());
+    @Override
+    public void onConnected(Bundle bundle) {
+        IncidentHelper.getInstance(this).onConnected(this);
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        Toast.makeText(this, "location changed", Toast.LENGTH_SHORT);
     }
 }
