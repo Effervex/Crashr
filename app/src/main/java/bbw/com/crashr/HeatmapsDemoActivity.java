@@ -23,6 +23,7 @@ import android.location.LocationManager;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlay;
@@ -129,14 +130,26 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
             Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
         }
 
-        if (mProvider == null) {
-            mProvider = new HeatmapTileProvider.Builder().data(
-                    mLists.get("crashes").getData()).build();
-            mOverlay = getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
-        } else {
-            mProvider.setData(mLists.get("crashes").getData());
-            mOverlay.clearTileCache();
+        if( mLists.get("crashes").getData().size() != 0 ) {
+            if (mProvider == null) {
+                mProvider = new HeatmapTileProvider.Builder().data(
+                        mLists.get("crashes").getData()).build();
+                mOverlay = getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+            } else {
+                mProvider.setData(mLists.get("crashes").getData());
+                mOverlay.clearTileCache();
+            }
         }
+
+        // ok now move the map to the user's current location
+        Location loc = IncidentHelper.getInstance(this).getLocation();
+        if(loc != null) {
+            LatLng coordinate = new LatLng(loc.getLatitude(), loc.getLongitude());
+            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(coordinate,
+                    getMap().getCameraPosition().zoom);
+            getMap().moveCamera( update );
+        }
+        // do the right zoom
 
     }
 
@@ -152,11 +165,6 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
         getMap().setMyLocationEnabled(true);
 
         //updateMap();
-
-        // Make the handler deal with the map
-        // Input: list of WeightedLatLngs, minimum and maximum zoom levels to calculate custom
-        // intensity from, and the map to draw the heatmap on
-        // radius, gradient and opacity not specified, so default are used
     }
 
     private ArrayList<LatLng> readIncidents( List<Incident> incidents ) {

@@ -59,6 +59,11 @@ public class IncidentHelper {
         return dataSource_.getLocalisedIncidents(lat - area_, lat + area_, lon - area_, lon + area_);
     }
 
+    public Location getLocation() {
+        Location location = LocationServices.FusedLocationApi.getLastLocation(googleAPIClient);
+        return location;
+    }
+
     public static IncidentHelper getInstance(Context c) {
         if (instance_ == null)
             instance_ = new IncidentHelper(c);
