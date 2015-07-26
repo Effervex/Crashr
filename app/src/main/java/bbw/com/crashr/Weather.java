@@ -87,8 +87,14 @@ public class Weather {
      * @return a code, or null if we could not map the weather to a code
      * @throws Exception
      */
-    public static String getWeatherCode(double longitude, double latitude) throws Exception {
-        return map.get( getWeatherDescription(longitude, latitude) );
+    public static String getWeatherCode(double longitude, double latitude) {
+        try {
+            return map.get(getWeatherDescription(longitude, latitude));
+        }
+        catch(Exception e)
+        {
+            return " ";
+        }
     }
 
 }
