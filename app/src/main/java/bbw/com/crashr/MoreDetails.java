@@ -2,19 +2,22 @@ package bbw.com.crashr;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
@@ -36,7 +39,27 @@ public class MoreDetails extends AppCompatActivity {
         Intent intent = getIntent();
         setContentView(R.layout.activity_more_details);
 
+        objectMap_ = readObjectMap();
+
         readInIncidents(intent.getStringExtra("INCIDENT"));
+    }
+
+    private Map<Character, String> readObjectMap() {
+        InputStream inStr = getResources().openRawResource(R.raw.object_map);
+        BufferedReader in = new BufferedReader(new InputStreamReader(inStr));
+        String input = null;
+        Map<Character, String> objectMap = new HashMap<>();
+        try {
+            while ((input = in.readLine()) != null) {
+                String[] split = input.split(",", 2);
+                objectMap.put(split[0].charAt(0), split[1]);
+            }
+
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return objectMap;
     }
 
     private void readInIncidents(String incidentString) {
@@ -72,8 +95,11 @@ public class MoreDetails extends AppCompatActivity {
             }
         }
 
+        TextView mainText = (TextView) findViewById(R.id.crash_details);
+        mainText.setText(incidentString);
+
         // Display the incidents
-        long currentTime = System.currentTimeMillis();
+        Date currentTime = new Date();
         RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.more_detail_layout);
         int incrID = 1;
         TextView prevView = null;
@@ -82,7 +108,7 @@ public class MoreDetails extends AppCompatActivity {
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
             params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
             if (incrID == 1)
-                params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+                params.addRule(RelativeLayout.BELOW, R.id.crash_details);
             else
                 params.addRule(RelativeLayout.BELOW, prevView.getId());
 
@@ -102,7 +128,7 @@ public class MoreDetails extends AppCompatActivity {
             params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
             if (incrID <= 2)
-                params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+                params.addRule(RelativeLayout.BELOW, R.id.crash_details);
             else
                 params.addRule(RelativeLayout.BELOW, prevView.getId());
             params.addRule(RelativeLayout.RIGHT_OF, timeAgoView.getId());
@@ -121,8 +147,8 @@ public class MoreDetails extends AppCompatActivity {
         }
     }
 
-    private String createTimeAgoString(long currentTime, Incident inc) {
-        long timeAgo = currentTime - inc.date.getTime();
+    private String createTimeAgoString(Date currentTime, Incident inc) {
+        long timeAgo = currentTime.getTime() - inc.date.getTime();
         String timeAgoStr = "";
         if (timeAgo <= TimeUnit.MINUTES.toMillis(120))
             timeAgoStr = TimeUnit.MINUTES.convert(timeAgo, TimeUnit.MILLISECONDS) + " minutes ago";
@@ -145,7 +171,7 @@ public class MoreDetails extends AppCompatActivity {
      */
     private String incidentToString(Incident inc) {
         StringBuilder incidentString = new StringBuilder();
-        // TODO Vehicle type
+        // TODO Vehicle type, Time of day
 
         // Objects struck
         incidentString.append("Crash involved: " + objectString(inc.objectsStruck));

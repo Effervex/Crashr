@@ -1,6 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
@@ -10,67 +9,80 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CrashrMain">
 
-    <TextSwitcher
-        android:id="@+id/hazard1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:onClick="moreHazardInfo"
-        android:padding="@dimen/text_padding"
-        android:text="@string/loading"
-        android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size"
-        android:measureAllChildren="false"
-        android:animateLayoutChanges="true"/>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-    <TextSwitcher
-        android:id="@+id/hazard2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/hazard1"
-        android:onClick="moreHazardInfo"
-        android:padding="@dimen/text_padding"
-        android:text="@string/loading"
-        android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size"
-        android:measureAllChildren="false"
-        android:animateLayoutChanges="true"/>
+        <RelativeLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextSwitcher
-        android:id="@+id/hazard3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/hazard2"
-        android:padding="@dimen/text_padding"
-        android:text="@string/loading"
-        android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size"
-        android:measureAllChildren="false"
-        android:animateLayoutChanges="true"/>
+            <TextSwitcher
+                android:id="@+id/hazard1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:animateLayoutChanges="true"
+                android:measureAllChildren="false"
+                android:onClick="moreHazardInfo"
+                android:padding="@dimen/text_padding"
+                android:text="@string/loading"
+                android:textColor="@color/text_colour"
+                android:textSize="@dimen/text_size" />
 
-    <TextSwitcher
-        android:id="@+id/hazard4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/hazard3"
-        android:onClick="moreHazardInfo"
-        android:padding="@dimen/text_padding"
-        android:text="@string/loading"
-        android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size"
-        android:measureAllChildren="false"
-        android:animateLayoutChanges="true"/>
+            <TextSwitcher
+                android:id="@+id/hazard2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hazard1"
+                android:animateLayoutChanges="true"
+                android:measureAllChildren="false"
+                android:onClick="moreHazardInfo"
+                android:padding="@dimen/text_padding"
+                android:text="@string/loading"
+                android:textColor="@color/text_colour"
+                android:textSize="@dimen/text_size" />
 
-    <TextSwitcher
-        android:id="@+id/hazard5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/hazard4"
-        android:onClick="moreHazardInfo"
-        android:padding="@dimen/text_padding"
-        android:text="@string/loading"
-        android:textColor="@color/text_colour"
-        android:textSize="@dimen/text_size"
-        android:measureAllChildren="false"
-        android:animateLayoutChanges="true"/>
+            <TextSwitcher
+                android:id="@+id/hazard3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hazard2"
+                android:animateLayoutChanges="true"
+                android:measureAllChildren="false"
+                android:padding="@dimen/text_padding"
+                android:text="@string/loading"
+                android:textColor="@color/text_colour"
+                android:textSize="@dimen/text_size" />
+
+            <TextSwitcher
+                android:id="@+id/hazard4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hazard3"
+                android:animateLayoutChanges="true"
+                android:measureAllChildren="false"
+                android:onClick="moreHazardInfo"
+                android:padding="@dimen/text_padding"
+                android:text="@string/loading"
+                android:textColor="@color/text_colour"
+                android:textSize="@dimen/text_size" />
+
+            <TextSwitcher
+                android:id="@+id/hazard5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hazard4"
+                android:animateLayoutChanges="true"
+                android:measureAllChildren="false"
+                android:onClick="moreHazardInfo"
+                android:padding="@dimen/text_padding"
+                android:text="@string/loading"
+                android:textColor="@color/text_colour"
+                android:textSize="@dimen/text_size" />
+        </RelativeLayout>
+    </ScrollView>
+
+
 </RelativeLayout>
