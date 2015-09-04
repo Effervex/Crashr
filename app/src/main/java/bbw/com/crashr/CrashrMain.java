@@ -25,6 +25,7 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -38,6 +39,7 @@ import java.util.concurrent.TimeUnit;
 import bbw.com.crashr.db.CrashDataSource;
 import bbw.com.crashr.db.Incident;
 import bbw.com.crashr.db.IncidentHelper;
+import bbw.com.crashr.ml.NaiveBayes;
 
 public class CrashrMain extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
@@ -165,11 +167,11 @@ public class CrashrMain extends AppCompatActivity implements GoogleApiClient.Con
             return null;
 
         // Process data
-        Map<String, Integer> incidentCounts = processIncidents(incidents);
+        Map<String, Double> incidentCounts = processIncidents(incidents);
         Iterator<String> iter = incidentCounts.keySet().iterator();
         for (int i = 0; i < numHazards && iter.hasNext(); i++) {
             // Example data
-            String nextKey = iter.next();
+            String nextKey = IncidentHelper.getInstance(this).getCauseHelper().getCause(iter.next());
             hazards[i] = new Hazard(nextKey);
         }
         return hazards;
@@ -181,25 +183,20 @@ public class CrashrMain extends AppCompatActivity implements GoogleApiClient.Con
      * @param incidents The incidents to process.
      * @return A sorted map of incidents, from most to least
      */
-    private SortedMap<String,Integer> processIncidents(List<Incident> incidents) {
-        Map<String, Integer> countMap = new HashMap<>();
-        for (Incident inc : incidents) {
-            String[] causes = inc.causes;
-            for (String cause : causes) {
-                if (cause.isEmpty())
-                    continue;
-                String causeCategory = IncidentHelper.getInstance(this).getCauseHelper().getCause(cause);
-                if (causeCategory.equals("ERROR"))
-                    continue;
-                if (!countMap.containsKey(causeCategory))
-                    countMap.put(causeCategory, 1);
-                else
-                    countMap.put(causeCategory, countMap.get(causeCategory) + 1);
-            }
-        }
+    private SortedMap<String,Double> processIncidents(List<Incident> incidents) {
+
+        Location loc = IncidentHelper.getInstance(this).getLocation();
+
+        Incident inc = new Incident();
+        inc.date = new Date();
+        inc.weather = Weather.getWeatherCode(loc.getLatitude(), loc.getLongitude());
+
+        NaiveBayes nb = new NaiveBayes(10);
+        nb.train(incidents);
+        Map<String, Double> countMap = nb.predict(inc);
 
         Comparator<String> comparison = new ValueComparator<>(countMap);
-        SortedMap<String, Integer> sortedMap = new TreeMap<>(comparison);
+        SortedMap<String, Double> sortedMap = new TreeMap<>(comparison);
         sortedMap.putAll(countMap);
         return sortedMap;
     }

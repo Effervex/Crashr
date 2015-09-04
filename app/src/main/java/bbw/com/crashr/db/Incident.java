@@ -12,6 +12,7 @@ public class Incident {
     public String[] causes;
     public String objectsStruck;
     public String roadWet;
+    public String weather;
     public long speedLimit;
     public long fatalCount;
     public long severeCount;
@@ -19,4 +20,9 @@ public class Incident {
     public double latitude;
     public double longitude;
 
+    public Incident()
+    {
+        date = new Date();
+        causes = new String[0];
+    }
 }
