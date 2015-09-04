@@ -75,8 +75,8 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
     private Handler locationHandler_;
 
 
-    private static final int RADIUS = 50;
-    private static final float OPACITY = 1.0f;
+    private static final int RADIUS = 30;
+    private static final float OPACITY = 0.75f;
 
 
     /**
@@ -123,7 +123,7 @@ public class HeatmapsDemoActivity extends BaseDemoActivity {
                 mProvider = new HeatmapTileProvider.Builder().data(
                         mLists.get("crashes").getData()).build();
                 mProvider.setRadius(RADIUS);
-                mProvider.setOpacity(1.0);
+                mProvider.setOpacity(OPACITY);
                 mOverlay = getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
             } else {
                 mProvider.setData(mLists.get("crashes").getData());

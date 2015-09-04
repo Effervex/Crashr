@@ -1,9 +1,6 @@
 package bbw.com.crashr;
 
-import android.content.Context;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
@@ -21,22 +18,17 @@ import android.widget.ViewSwitcher;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationServices;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
-import java.util.SortedSet;
 import java.util.TreeMap;
-import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
-import bbw.com.crashr.db.CrashDataSource;
 import bbw.com.crashr.db.Incident;
 import bbw.com.crashr.db.IncidentHelper;
 import bbw.com.crashr.ml.NaiveBayes;
@@ -117,7 +109,9 @@ public class CrashrMain extends AppCompatActivity implements GoogleApiClient.Con
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+            Intent intent = new Intent(this, About.class);
+            startActivity(intent);
             return true;
         }
 
@@ -144,7 +138,7 @@ public class CrashrMain extends AppCompatActivity implements GoogleApiClient.Con
             else if (newHazards[i] == null || i >= newHazards.length)
                 hazardViews_[i].setText("");
             else if (hazards_[i] == null || !hazards_[i].equals(newHazards[i])) {
-                hazardViews_[i].setText(newHazards[i].getText());
+                hazardViews_[i].setText("[+] " + newHazards[i].getText());
             }
         }
         if (newHazards == null)
@@ -216,7 +210,7 @@ public class CrashrMain extends AppCompatActivity implements GoogleApiClient.Con
     public void moreHazardInfo(View view) {
         // Open a new Intent
         TextView textView = (TextView) ((TextSwitcher) view).getCurrentView();
-        String viewString = textView.getText().toString();
+        String viewString = textView.getText().toString().substring(4);
         Intent intent = new Intent(this, MoreDetails.class);
         intent.putExtra("INCIDENT", viewString);
         startActivity(intent);

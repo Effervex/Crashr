@@ -9,9 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CrashrMain">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/text_colour"
+        android:textStyle="bold|italic"
+        android:id="@+id/main_title"
+        android:layout_centerHorizontal="true"/>
+
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_below="@id/main_title">
 
         <RelativeLayout
             android:id="@+id/main_layout"

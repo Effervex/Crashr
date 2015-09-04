@@ -47,7 +47,7 @@ public class MoreDetails extends AppCompatActivity {
     private Map<Character, String> readObjectMap() {
         InputStream inStr = getResources().openRawResource(R.raw.object_map);
         BufferedReader in = new BufferedReader(new InputStreamReader(inStr));
-        String input = null;
+        String input;
         Map<Character, String> objectMap = new HashMap<>();
         try {
             while ((input = in.readLine()) != null) {
@@ -107,9 +107,7 @@ public class MoreDetails extends AppCompatActivity {
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
             params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
-            if (incrID == 1)
-                params.addRule(RelativeLayout.BELOW, R.id.crash_details);
-            else
+            if (incrID != 1)
                 params.addRule(RelativeLayout.BELOW, prevView.getId());
 
             // Add a day string
@@ -150,13 +148,15 @@ public class MoreDetails extends AppCompatActivity {
     private String createTimeAgoString(Date currentTime, Incident inc) {
         long timeAgo = currentTime.getTime() - inc.date.getTime();
         String timeAgoStr = "";
-        if (timeAgo <= TimeUnit.MINUTES.toMillis(120))
+        if (timeAgo < TimeUnit.MINUTES.toMillis(1))
+            timeAgoStr = "???";
+        else if (timeAgo <= TimeUnit.MINUTES.toMillis(120))
             timeAgoStr = TimeUnit.MINUTES.convert(timeAgo, TimeUnit.MILLISECONDS) + " minutes ago";
         else if (timeAgo <= TimeUnit.HOURS.toMillis(48))
             timeAgoStr = TimeUnit.HOURS.convert(timeAgo, TimeUnit.MILLISECONDS) + " hours ago";
         else if (timeAgo <= TimeUnit.DAYS.toMillis(60))
             timeAgoStr = TimeUnit.DAYS.convert(timeAgo, TimeUnit.MILLISECONDS) + " days ago";
-        else if (timeAgo <= TimeUnit.DAYS.toMillis(365))
+        else if (timeAgo <= TimeUnit.DAYS.toMillis(730))
             timeAgoStr = (int) (TimeUnit.DAYS.convert(timeAgo, TimeUnit.MILLISECONDS) / 7) + " weeks ago";
         else
             timeAgoStr = (int) (TimeUnit.DAYS.convert(timeAgo, TimeUnit.MILLISECONDS) / 365) + " years ago";
@@ -245,7 +245,7 @@ public class MoreDetails extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
             return true;
         }
 

@@ -55,7 +55,7 @@ public class CauseHelper {
     public String getCause(String causeCode) {
         String causeStr = getCauseString(causeCode);
         if (causeStr != null) {
-            int index = causeStr.indexOf(":");
+            int index = causeStr.lastIndexOf(":");
             return causeStr.substring(index + 1).trim();
         }
         return "ERROR";
